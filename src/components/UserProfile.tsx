@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { useParams } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 import { User } from '../api/types'
 import Field from '../private/Field'
 
@@ -9,7 +9,14 @@ const UserProfile = ( ) => {
     const [author, setAuthor] = useState<User | null>(null)
 
     let { id } = useParams() // get the id from ur
+    const navigate = useNavigate()
 
+
+
+    async function handleDeleteAuthor() {
+        // back to Home
+        navigate('/')
+    }
 
     return (
         author && (
@@ -31,8 +38,21 @@ const UserProfile = ( ) => {
                     <span>{author.address.city} - </span>
                     <span>{author.address.zipcode}</span>
                 </Field>
+
+
+
+                <Field label="Extra actions">
+                        <button
+                            type="button"
+                            className="button is-warning"
+                            onClick={handleDeleteAuthor}
+                        >
+                            Delete post
+                        </button>
+                    </Field>
             </div>
         )
+        
     )
 }
 

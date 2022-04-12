@@ -26,28 +26,30 @@ const AllUsers = () => {
             <div key={values.id}>
                 <UserItem{...values} />
             </div>
+
+
         )
     }
 
-    // if (loading) {
-    //     return (
-    //         <section className="hero">
-    //             <div className="hero-body">
-    //                 <p className="title">Loading ...</p>
-    //             </div>
-    //         </section>
-    //     )
-    // }
+    if (loading) {
+        return (
+            <section className="hero">
+                <div className="hero-body">
+                    <p className="title">Loading ...</p>
+                </div>
+            </section>
+        )
+    }
 
-    // if (users.length === 0) {
-    //     return (
-    //         <section className="hero">
-    //             <div className="hero-body">
-    //                 <p className="title">No Posts</p>
-    //             </div>
-    //         </section>
-    //     )
-    // }
+    if (users.length === 0) {
+        return (
+            <section className="hero">
+                <div className="hero-body">
+                    <p className="title">No Posts</p>
+                </div>
+            </section>
+        )
+    }
 
     return <ul className="user-list">{users.map(renderItem)}</ul>
 
